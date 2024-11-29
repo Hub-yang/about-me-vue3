@@ -1,25 +1,100 @@
-<script setup lang="ts">
-const router = useRouter()
-const id = ref(0)
+<script setup lang='ts'>
+import Icon1 from '~/assets/icon1.svg'
+import Icon2 from '~/assets/icon2.svg'
+import Icon3 from '~/assets/icon3.svg'
+import Icon4 from '~/assets/icon4.svg'
 
-function goToArticle() {
-  router.push(`/article/${id.value}`)
+let timer: any
+const userInfo = {
+  name: 'Hubery Yang',
+  desc: '👋 Hi, 我是 "Hubery Yang"',
+  post: '👨‍💻 前端开发者 | Vue & Nuxt & Js & Python',
+  hobby: '🚀 脚本编写, 网站开发',
+  script: '💓 拍摄 | 剪辑 | 阅读 | 羽毛球',
+  mail: '18830279823@163.com',
+}
+
+const iconComponents: anyKey = {
+  Icon1,
+  Icon2,
+  Icon3,
+  Icon4,
+}
+
+function onNavigate(link: number) {
+  let url = ''
+  switch (link) {
+    case 1:
+      url = 'https://github.com/Hub-yang'
+      break
+    case 2:
+      url = 'https://twitter.com/mochenghualei'
+      break
+    case 3:
+      url = 'https://space.bilibili.com/278851804'
+      break
+    case 4:
+      url = 'https://www.youtube.com/@HuberyYang'
+      break
+  }
+  window.open(url, '_blank')
+}
+
+const tootipShow = ref(false)
+
+async function onMailClick() {
+  try {
+    await navigator.clipboard.writeText(userInfo.mail)
+    tootipShow.value = true
+    clearTimeout(timer)
+    timer = setTimeout(() => tootipShow.value = false, 2000)
+  }
+  // eslint-disable-next-line unused-imports/no-unused-vars
+  catch (_err) {
+    throw new Error('copy mail error')
+  }
 }
 </script>
 
 <template>
-  <div flex="~ justify-center items-center" gap-2>
-    <button btn @click="id--">
-      -
-    </button>
-    <a
-      class="cursor-pointer font-bold underline underline-offset-3 decoration-dashed transition-duration-250 transition-property-color hover:color-#646cff"
-      @click="goToArticle"
-    >
-      Go To Article {{ id }}
-    </a>
-    <button btn @click="id++">
-      +
-    </button>
+  <div class="tootip" :style="{ top: tootipShow ? '10px' : '-50px' }">
+    拷贝成功
   </div>
+  <div class="content">
+    <div class="info_card">
+      <div class="card">
+        <div class="glass">
+          <div class="title">
+            {{ userInfo.name }}
+          </div>
+          <div id="intro">
+            <div>{{ userInfo.desc }}</div>
+            <div>{{ userInfo.post }}</div>
+            <div>{{ userInfo.hobby }}</div>
+            <div>{{ userInfo.script }}</div>
+            <div>
+              <span>📧 与我联系 [<span class="mail" @click="onMailClick">{{ userInfo.mail }}</span>]
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="logo">
+          <span v-for="key in 4" :key class="circle" :class="[`circle${key + 1}`]">
+            <img v-if="key === 4" class="avatar" src="/avatar.jpg" alt="">
+          </span>
+        </div>
+
+        <div class="bottom">
+          <div class="social-buttons-container">
+            <button v-for="item in 4" :key="item" @click="onNavigate(item)">
+              <component :is="iconComponents[`Icon${item}`]" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <Footer />
 </template>
