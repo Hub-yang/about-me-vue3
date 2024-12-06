@@ -12,6 +12,7 @@ const userInfo = {
   hobby: '🚀 脚本编写, 网站开发',
   script: '💓 拍摄 | 剪辑 | 阅读 | 羽毛球',
   mail: '18830279823@163.com',
+  phone: '15932130680',
 }
 
 const iconComponents: anyKey = {
@@ -42,9 +43,9 @@ function onNavigate(link: number) {
 
 const tootipShow = ref(false)
 
-async function onMailClick() {
+async function onCopyClick(type: string) {
   try {
-    await navigator.clipboard.writeText(userInfo.mail)
+    await navigator.clipboard.writeText((userInfo as anyKey)[type])
     tootipShow.value = true
     clearTimeout(timer)
     timer = setTimeout(() => tootipShow.value = false, 2000)
@@ -72,10 +73,11 @@ async function onMailClick() {
             <div>{{ userInfo.post }}</div>
             <div>{{ userInfo.hobby }}</div>
             <div>{{ userInfo.script }}</div>
-            <div>
-              <span>📧 与我联系 [<span class="mail" @click="onMailClick">{{ userInfo.mail }}</span>]
-              </span>
+            <div class="connection">
+              与我联系
             </div>
+            <div>📧 [<span class="mail" @click="onCopyClick('mail')">{{ userInfo.mail }}</span>]</div>
+            <div>📱 [<span class="mail" @click="onCopyClick('phone')">{{ userInfo.phone }}</span>]</div>
           </div>
         </div>
 

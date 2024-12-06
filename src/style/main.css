@@ -82,7 +82,7 @@ body .background {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 450px;
-  height: 400px;
+  height: 464px;
   perspective: 1000px;
 }
 
@@ -170,6 +170,11 @@ body .background {
 
 .info_card .card .glass #intro div:first-child {
   margin-bottom: 25px;
+}
+
+.info_card .card .glass .connection {
+  font-size: 14px !important;
+  margin: 12px 0 10px 0;
 }
 
 .info_card .card .glass #intro .mail {
