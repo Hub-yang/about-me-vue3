@@ -3,7 +3,7 @@
   "type": "module",
   "private": true,
   "packageManager": "pnpm@9.10.0",
-  "description": "about-me vue3版本",
+  "description": "about-me 个人主页 vue3版本",
   "author": "Hubery Yang",
   "license": "MIT",
   "homepage": "https://github.com/Hub-yang/about-me-vue3#readme",
