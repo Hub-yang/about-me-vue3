@@ -83,7 +83,7 @@ async function onCopyClick(type: string) {
 
         <div class="logo">
           <span v-for="key in 4" :key class="circle" :class="[`circle${key + 1}`]">
-            <img v-if="key === 4" class="avatar" src="/avatar.jpg" alt="">
+            <img v-if="key === 4" class="avatar" src="/avatar.webp" alt="">
           </span>
         </div>
 
