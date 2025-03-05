@@ -15,26 +15,38 @@ const userInfo = {
   phone: '15932130680',
 }
 
-const iconComponents: anyKey = {
-  Icon1,
-  Icon2,
-  Icon3,
-  Icon4,
-}
+const iconComponents: anyKey = [
+  {
+    title: 'github',
+    comp: Icon1,
+  },
+  {
+    title: 'X',
+    comp: Icon2,
+  },
+  {
+    title: 'bilibili',
+    comp: Icon3,
+  },
+  {
+    title: 'youtube',
+    comp: Icon4,
+  },
+]
 
 function onNavigate(link: number) {
   let url = ''
   switch (link) {
-    case 1:
+    case 0:
       url = 'https://github.com/Hub-yang'
       break
-    case 2:
+    case 1:
       url = 'https://twitter.com/mochenghualei'
       break
-    case 3:
+    case 2:
       url = 'https://space.bilibili.com/278851804'
       break
-    case 4:
+    case 3:
       url = 'https://www.youtube.com/@HuberyYang'
       break
   }
@@ -89,8 +101,8 @@ async function onCopyClick(type: string) {
 
         <div class="bottom">
           <div class="social-buttons-container">
-            <button v-for="item in 4" :key="item" @click="onNavigate(item)">
-              <component :is="iconComponents[`Icon${item}`]" />
+            <button v-for="({ title, comp }, idx) in iconComponents" :key="title" :title @click="onNavigate(idx)">
+              <component :is="comp" />
             </button>
           </div>
         </div>
