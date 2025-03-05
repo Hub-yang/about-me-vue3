@@ -101,7 +101,7 @@ async function onCopyClick(type: string) {
 
         <div class="bottom">
           <div class="social-buttons-container">
-            <button v-for="({ title, comp }, idx) in iconComponents" :key="title" :title @click="onNavigate(idx)">
+            <button v-for="({ title, comp }, idx) in iconComponents" :key="title" :title @click="onNavigate(Number(idx))">
               <component :is="comp" />
             </button>
           </div>
