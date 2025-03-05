@@ -8,6 +8,8 @@ import { VueRouterAutoImports } from 'unplugin-vue-router'
 import UnoCSS from 'unocss/vite'
 import VueDevTools from 'vite-plugin-vue-devtools'
 import svgLoader from 'vite-svg-loader'
+import viteImagemin from 'vite-plugin-imagemin'
+import viteCompression from 'vite-plugin-compression'
 
 export default defineConfig({
   resolve: {
@@ -41,5 +43,45 @@ export default defineConfig({
       dts: true,
     }),
     UnoCSS(),
+    viteCompression(),
+    viteImagemin({
+      gifsicle: {
+        optimizationLevel: 7,
+        interlaced: false,
+      },
+      optipng: {
+        optimizationLevel: 7,
+      },
+      mozjpeg: {
+        quality: 20,
+      },
+      pngquant: {
+        quality: [0.8, 0.9],
+        speed: 4,
+      },
+      svgo: {
+        plugins: [
+          {
+            name: 'removeViewBox',
+          },
+          {
+            name: 'removeEmptyAttrs',
+            active: false,
+          },
+        ],
+      },
+      webp: {
+        quality: 75,
+      },
+    }),
   ],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vue: ['vue', 'vue-router', '@vueuse/core'],
+        },
+      },
+    },
+  },
 })
