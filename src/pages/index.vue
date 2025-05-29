@@ -73,6 +73,9 @@ async function onCopyClick(type: string) {
   <div class="tootip" :style="{ top: tootipShow ? '10px' : '-50px' }">
     拷贝成功
   </div>
+
+  <Navigater />
+
   <div class="content">
     <div class="info_card">
       <div class="card">
