@@ -44,13 +44,4 @@ export default defineConfig({
     UnoCSS(),
     viteCompression(),
   ],
-  build: {
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          vue: ['vue', 'vue-router', '@vueuse/core'],
-        },
-      },
-    },
-  },
 })
