@@ -1,6 +1,7 @@
 {
   "name": "about-me-vue3",
   "type": "module",
+  "version": "1.0.0",
   "private": true,
   "packageManager": "pnpm@10.28.2",
   "description": "about-me 个人主页 vue3版本",
@@ -25,7 +26,7 @@
     "taze": "npx taze major -r",
     "cz": "git cz",
     "license:mit": "npx license MIT",
-    "release": "bumpp"
+    "release": "npx bumpp"
   },
   "dependencies": {
     "@vueuse/core": "^14.1.0",
