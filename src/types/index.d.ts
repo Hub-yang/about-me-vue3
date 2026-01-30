@@ -1,1 +1,1 @@
-type anyKey = Record<string, any>
+type AnyKey = Record<string, any>

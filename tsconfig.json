@@ -1,10 +1,9 @@
 {
   "compilerOptions": {
-    "target": "es2016",
-    "jsx": "preserve",
+    "target": "esnext",
     "lib": ["DOM", "ESNext"],
     "baseUrl": ".",
-    "module": "ESNext",
+    "module": "esnext",
     "moduleResolution": "bundler",
     "paths": {
       "~/*": ["src/*"]
@@ -14,7 +13,6 @@
       "vite/client",
       "unplugin-vue-router/client"
     ],
-    "allowJs": true,
     "strict": true,
     "strictNullChecks": true,
     "noUnusedLocals": true,
@@ -24,8 +22,6 @@
   },
   "exclude": [
     "dist",
-    "node_modules",
-    "eslint.config.mjs",
-    "commitlint.config.js"
+    "node_modules"
   ]
 }

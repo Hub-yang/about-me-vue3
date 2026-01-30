@@ -8,14 +8,14 @@ let timer: any
 const userInfo = {
   name: 'Hubery Yang',
   desc: '👋 Hi, 我是 "Hubery Yang"',
-  post: '👨‍💻 前端开发者 | Vue & Nuxt & Js & Python',
+  post: '👨‍💻 前端开发者 | Vue & Nuxt & React & Python',
   hobby: '🚀 脚本编写, 网站开发',
   script: '💓 拍摄 | 剪辑 | 阅读 | 羽毛球',
   mail: '18830279823@163.com',
-  phone: '15932130680',
+  phone: '17274892516',
 }
 
-const iconComponents: anyKey = [
+const iconComponents: AnyKey = [
   {
     title: 'github',
     comp: Icon1,
@@ -57,7 +57,7 @@ const tootipShow = ref(false)
 
 async function onCopyClick(type: string) {
   try {
-    await navigator.clipboard.writeText((userInfo as anyKey)[type])
+    await navigator.clipboard.writeText((userInfo as AnyKey)[type])
     tootipShow.value = true
     clearTimeout(timer)
     timer = setTimeout(() => tootipShow.value = false, 2000)
@@ -112,6 +112,4 @@ async function onCopyClick(type: string) {
       </div>
     </div>
   </div>
-
-  <Footer />
 </template>
