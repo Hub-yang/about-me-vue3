@@ -14,6 +14,7 @@ export default {
       'ci',
       'revert',
       'chore',
+      'release',
     ]],
   },
   prompt: {
